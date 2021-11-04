@@ -1,7 +1,7 @@
 import ServicesLoader from 'components/services-loader'
 import { act } from "react-dom/test-utils";
 import Spinner from 'components/spinner';
-import DataCard from 'components/data-card';
+import Service from 'components/service'
 
 import {mount} from 'enzyme'
 
@@ -18,7 +18,7 @@ beforeEach(() => {
 });
 
 it("fires service", async () => {
-  fetch.mockResponseOnce(JSON.stringify({ rates: { CAD: 1.42 } }));
+  fetch.mockResponseOnce(JSON.stringify({ names: [{name: "test1"},{name: "test2"},{name: "test3"},{name: "test4"},{name: "test5"},{name: "test6"}]}));
 
   const component = mount(
     <ServicesLoader/>,
@@ -28,7 +28,7 @@ it("fires service", async () => {
 
   await waitForComponentToPaint(component);
 
-  expect(component.find(DataCard).length).toBe(6);
+  expect(component.find(Service).length).toBe(6);
 
 });
 
@@ -41,7 +41,7 @@ it("Returns fails", async () => {
 
   await waitForComponentToPaint(component);
 
-  expect(component.text()).toEqual("Error loading data sources");
+  expect(component.text()).toEqual("Error loading services");
 
   expect(fetch).toHaveBeenCalledWith(
     `http://localhost:3001/api/services/6`

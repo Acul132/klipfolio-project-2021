@@ -17,8 +17,8 @@ beforeEach(() => {
   fetch.resetMocks();
 });
 
-it("fires service", async () => {
-  fetch.mockResponseOnce(JSON.stringify({ rates: { CAD: 1.42 } }));
+it("Visualization loader renders 6 visualization components", async () => {
+  fetch.mockResponseOnce(JSON.stringify({ visualizations: { CAD: 1.42 } }));
 
   const component = mount(
     <VisualizationsLoader/>,
@@ -32,7 +32,7 @@ it("fires service", async () => {
 
 });
 
-it("Returns fails", async () => {
+it("Visualization displays error text on API error response", async () => {
   fetch.mockReject(() => Promise.reject("API is down"));
 
   const component = mount(
@@ -41,7 +41,7 @@ it("Returns fails", async () => {
 
   await waitForComponentToPaint(component);
 
-  expect(component.text()).toEqual("Error loading data sources");
+  expect(component.text()).toEqual("Error loading visualizations");
 
   expect(fetch).toHaveBeenCalledWith(
     `http://localhost:3001/api/visualizations/6`

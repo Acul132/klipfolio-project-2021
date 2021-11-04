@@ -18,7 +18,7 @@ beforeEach(() => {
 });
 
 it("fires datasource", async () => {
-  fetch.mockResponseOnce(JSON.stringify({ rates: { CAD: 1.42 } }));
+  fetch.mockResponseOnce(JSON.stringify({ titles: [{title: "title1"},{title: "title2"},{title: "title3"},{title: "title4"},{title: "title5"},{title: "title6"}] }));
 
   const component = mount(
     <DataSourcesLoader/>,
@@ -46,6 +46,6 @@ it("Returns fails", async () => {
 
   // expect(rate).toEqual(null);
   expect(fetch).toHaveBeenCalledWith(
-    `http://localhost:3001/api//data-sources/6`
+    `http://localhost:3001/api/data-sources/6`
   );
 });
