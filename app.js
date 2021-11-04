@@ -14,7 +14,7 @@ class App {
     this.app.use(cors())
     this.initRoutes()
     if(process.env.NODE_ENV === "production"){
-      this.app.use(express.static("client/build"))
+      this.app.use(Express.static("client/build"))
     }
   }
 
