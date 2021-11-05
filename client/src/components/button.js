@@ -27,6 +27,7 @@ const StyledButton = styled(Link)`
 
 const Button = ({to, children, ...rest}) => {
   return (
+    // Return button as a <Link> if a to prop is present, otherwise a normal <button>
     to ? <StyledButton to={to} {...rest}>{children}</StyledButton> : <StyledButton {...rest} as={"button"}>{children}</StyledButton>
   )
 }

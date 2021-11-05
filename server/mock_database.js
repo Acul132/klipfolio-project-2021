@@ -1,15 +1,4 @@
-const {
-  initializeApp,
-  applicationDefault,
-  cert
-} = require('firebase-admin/app')
-const {
-  getFirestore,
-  Timestamp,
-  FieldValue
-} = require('firebase-admin/firestore')
-const serviceAccount = require('./firebase-creds.json')
-
+//Mock Database class created for unit testing
 class Database {
   constructor() {
 

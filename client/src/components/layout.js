@@ -12,6 +12,7 @@ const Main = styled.main`
 
 `
 
+//Layout of the Home page
 function Layout({children}) {
   return (
     <div>

@@ -42,14 +42,15 @@ const HeaderSearch = () => {
   const [search, setSearch] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
   const ref = useRef()
-
   
-
   const refineSearch = () => {
+    //Handle cases where data does not exist yet or an error has occured
     if (isLoading || !data?.options || error || search === null) {
       return;
     }
+
     setResults(data.options.filter(option => {
+      //Filter the current search results based on active filters and input text
       if(activeFilters.length > 0) {
         return option.title.toLowerCase().includes(search.toLowerCase()) && activeFilters.includes(option.category)
       } else {
@@ -59,6 +60,7 @@ const HeaderSearch = () => {
   }
   
   const filter = (filter) => {
+    //Toggle the two filters on and off
     if (activeFilters.includes(filter)) {
       setActiveFilters(activeFilters.filter(f => f !== filter))
     } else {
@@ -75,6 +77,7 @@ const HeaderSearch = () => {
     refineSearch()
   }, [search, data, activeFilters, refineSearch])
 
+  //Set isOpen to false if the document is clicked with cursor NOT over the search
   const handleClickOutside = (e) => {
     if (ref.current && !ref.current.contains(e.target)) {
       setIsOpen(false)
@@ -84,11 +87,12 @@ const HeaderSearch = () => {
   const startSearch = () => {
     if(!isOpen) {
       setIsOpen(true)
-      setSearch('')
+      setSearch('') //Important to set search here in order to refine the search upon initial click
     }
   }
 
   useEffect(() => {
+    //Adding event listener (and cleanup) to be used in order to close the search results
     document.addEventListener('click', handleClickOutside)
     return () => {
       document.removeEventListener('click', handleClickOutside)

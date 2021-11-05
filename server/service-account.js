@@ -1,4 +1,5 @@
 if (process.env.NODE_ENV === 'production'){
+  //Private information is provided through env variables in heroku when in production mode
   module.exports = serviceAccount = {
       "type": "service_account",
       "project_id": "klipfolio-project-2021",

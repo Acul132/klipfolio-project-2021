@@ -2,9 +2,6 @@ import styled from 'styled-components'
 import { useEffect, useRef, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 
-
-
-
 const StyledModalContainer = styled.div`
   position: fixed;
   display: flex;
@@ -17,7 +14,6 @@ const StyledModalContainer = styled.div`
   background-color: rgba(0,0,0,0.5);
   z-index: 500;
 `
-
 
 const StyledModal = styled.div`
   width: 50vw;
@@ -64,16 +60,17 @@ const ModalVisualization = ({data, title, close}) => {
         ]
       })
     }
-  }, [data, title])
+  }, [data, title]) //Update chart whenever Title or Data changes
 
  const handleClickOutside = (e) => {
+    //Close modal if mouse click occurs with mouse not over the modal
     if (ref.current && !ref.current.contains(e.target)) {
       close()
     }
  }
 
   useEffect(() => {
-
+    //Adding event listener (and cleanup) to be used in order to close the modal
     document.addEventListener('click', handleClickOutside)
     return () => {
       return document.removeEventListener('click', handleClickOutside)

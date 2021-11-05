@@ -5,6 +5,7 @@ const {
 const { getFirestore } = require('firebase-admin/firestore')
 const serviceAccount = require('./service-account')
 
+//Database wrapper class for Firestore fetches
 class Database {
 	constructor() {
 		initializeApp({
@@ -44,6 +45,7 @@ class Database {
 	}
 
 	async fetchSearchOptions() {
+		//Return the Title/Name for every Service/DataSource/Visualization and their associated Category
 		const services = await this.fetchServices()
 		const labeledServices = services.map(({
 			name

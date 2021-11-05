@@ -4,6 +4,7 @@ import Spinner from 'components/spinner.js';
 
 
 const VisualizationsLoader = ({limit = 6}) => {
+  //Fetch Visualization data and current status/error
   const {isLoading, data, error} = useVisualizations(limit);
   return (
     <>

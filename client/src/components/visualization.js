@@ -34,7 +34,7 @@ const options = {
   }
 };
 
-const StyledChardContainer = styled.div`
+const StyledChartContainer = styled.div`
   position: absolute;
   bottom: 0;
 
@@ -100,7 +100,7 @@ const StyledVisualizationPrevious = styled.div`
   }
   div {
     text-align: center;
-    ${props => props.trendingUp ? css`
+    ${props => props.trendingUp ? css` 
       color: rgb(52, 173, 120);
       fill: #34ad78;
     ` 
@@ -122,11 +122,11 @@ const StyledVisualizationPrevious = styled.div`
 `
 
 const Visualization = ({title, value, diff, data, period}) => {
-
   const [width, setWidth] = useState(0)
   const [showModal, setShowModal] = useState(false)
   const ref = useRef()
   const diffNumber = Number.parseFloat(diff)
+  //Determine if the difference is negative or positive
   const trendingUp = diffNumber >= 0
   const previous = !trendingUp ? diffNumber * -1 : diffNumber
 
@@ -163,6 +163,7 @@ const Visualization = ({title, value, diff, data, period}) => {
   }
 
   useEffect(() => {
+    //Add event listener to dynamically change width of <StyledChartContainer>
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => {
@@ -187,9 +188,9 @@ const Visualization = ({title, value, diff, data, period}) => {
             </StyledVisualizationPrevious>
           </StyledVisualizationGrid>
         </StyledVisualizationContainer>
-        <StyledChardContainer  width={width}>
+        <StyledChartContainer  width={width}>
           <Line data={chartData} options={options} />
-        </StyledChardContainer>
+        </StyledChartContainer>
       </StyledVisualizationCard>
         {showModal && <ModalVisualization title={title} data={data} close={() => {setShowModal(false)}}/>}
       </>

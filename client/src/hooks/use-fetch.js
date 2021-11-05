@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useIsMounted } from "hooks/use-is-mounted";
 
+//Custom hook to be used as a wrapper with the fetch api
 export const useFetchApi = (url) => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  //use isMounted to only set data if the referenced component is still mounted
   const isMounted = useIsMounted();
 
   useEffect(() => {

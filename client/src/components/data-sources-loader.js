@@ -4,6 +4,7 @@ import Spinner from 'components/spinner.js';
 
 
 const DataSourcesLoader = ({limit = 6}) => {
+  //Fetch Data Source data and current status/error
   const {isLoading, data, error} = useDataSources(limit);
   return (
     <>

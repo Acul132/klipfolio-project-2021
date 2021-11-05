@@ -4,6 +4,7 @@ import Spinner from 'components/spinner.js';
 
 
 const ServicesLoader = ({limit = 6}) => {
+  //Fetch Services data and current status/error
   const {isLoading, data, error} = useServices(limit);
   return (
     <>

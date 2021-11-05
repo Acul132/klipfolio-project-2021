@@ -1,4 +1,4 @@
-
+//Mock database data to be used in unit tests
 const mockServices = [
     {name: "Facebook"},
     {name: "Google"},
