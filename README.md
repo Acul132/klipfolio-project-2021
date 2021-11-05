@@ -17,7 +17,7 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view the application in the browser.
 
 Ensure the following files provided by email are deposited into the correct locations:
-.env -> client/
-firebase-creds.json -> server/
+.env -> client/.env
+firebase-creds.json -> server/firebase-creds.json
 
 This application is hosted at https://klipfolio-project-2021.herokuapp.com/
